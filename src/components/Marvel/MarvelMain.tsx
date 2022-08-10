@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const VITE_MARVEL_PUB_KEY: string = import.meta.env.VITE_MARVEL_PUB_KEY;
 const VITE_MARVEL_PRIVATE_KEY: string = import.meta.env.VITE_MARVEL_PRIVATE_KEY;
@@ -103,14 +104,16 @@ export const MarvelMain = () => {
             return hero.id && hero.name ? (
               <li key={hero.id} className="p-5 text-4xl w-70 ">
                 {hero.name}
-                <img
-                  alt={`image of ${hero.name}`}
-                  className="w-40 h-40"
-                  src={ImgSrc}
-                  onClick={() => {
-                    handleHeroClick(hero.id);
-                  }}
-                />
+                <Link to={`../marvel-hero/${hero.id}`}>
+                  <img
+                    alt={`image of ${hero.name}`}
+                    className="w-40 h-40"
+                    src={ImgSrc}
+                    onClick={() => {
+                      handleHeroClick(hero.id);
+                    }}
+                  />
+                </Link>
               </li>
             ) : null;
           })}
